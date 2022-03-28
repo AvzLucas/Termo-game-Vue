@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderComponent msg="Welcome to Your Vue.js App"/>
+    <LetterField />
+    <KeyBoard />
+    <p v-for="i in teste" v-bind:key="i">{{teste[i]}}</p>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderComponent from './components/HeaderComponent.vue'
+import LetterField from './components/LetterFields.vue'
+import KeyBoard from './components/KeyBoard.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderComponent,
+    LetterField,
+    KeyBoard
+  },
+  mounted:function(){
+    console.log(this.something[0])
   }
+  ,
+  data(){
+    return {
+      dataSet : this.$store.dataSet,
+      teste : this.$store.something
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app{
+    display: grid;
+    place-items:center;
+  }
 </style>
